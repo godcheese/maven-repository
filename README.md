@@ -22,5 +22,4 @@ pom.xml 文件中依赖包添加方式，如下：
     <artifactId>tile</artifactId>
     <version>1.0.0</version>
  </dependency>
-```# maven-repository
-自己的 Maven Repository
+```
