@@ -23,3 +23,28 @@ pom.xml 文件中依赖包添加方式，如下：
     <version>1.0.0</version>
  </dependency>
 ```
+
+deploy.sh 代码：
+```
+#!/usr/bin/env bash
+echo "author godcheese"
+CURRENT_DIR=$(pwd)
+echo ${CURRENT_DIR}
+SCRIPTS_DIR=$(cd "$(dirname $0)" || exit; pwd)
+cd "${SCRIPTS_DIR}" || exit
+cd ..
+rm -rf maven-repository
+git clone https://github.com/godcheese/maven-repository.git
+mvn clean deploy -Dmaven.test.skip -DaltDeploymentRepository="godcheese-github-maven-repository::default::file:`pwd`/maven-repository/repository"
+cd maven-repository
+echo "Add file..."
+git add -A
+git commit -m "deploy release package."
+echo "Submit code..."
+git push origin master
+echo "Submit complete,close..."
+cd "${CURRENT_DIR}"
+cd ..
+rm -rf maven-repository
+
+```
