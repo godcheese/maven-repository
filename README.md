@@ -1,7 +1,7 @@
 # maven-repository
 自己的 Maven Repository
 
-将以下代码添加到项目的 pom.xml 中即可获取本仓库的依赖包。
+将以下代码添加到项目的 pom.xml 中即可获取本仓库的依赖包：
 ```
 <repositories>
     <repository>
