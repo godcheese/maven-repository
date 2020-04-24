@@ -24,6 +24,8 @@
     </repositories>
 ```
 
+国内镜像地址（解决无法连接 GitHub 的问题）
+
 ```
   <repositories>
         <repository>
