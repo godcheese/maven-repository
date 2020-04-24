@@ -16,23 +16,23 @@
 ```
 或者直接使用
 ```
-  <repositories>
-        <repository>
-            <id>godcheese-github-maven-repository</id>
-            <url>https://raw.githubusercontent.com/godcheese/maven-repository/master/repository</url>
-        </repository>
-    </repositories>
+<repositories>
+    <repository>
+        <id>godcheese-github-maven-repository</id>
+        <url>https://raw.githubusercontent.com/godcheese/maven-repository/master/repository</url>
+    </repository>
+</repositories>
 ```
 
 国内镜像地址（解决无法连接 GitHub 的问题）
 
 ```
-  <repositories>
-        <repository>
-            <id>godcheese-github-maven-repository</id>
-            <url>https://cdn.jsdelivr.net/gh/godcheese/maven-repository</url>
-        </repository>
-    </repositories>
+<repositories>
+    <repository>
+        <id>godcheese-github-maven-repository</id>
+        <url>https://cdn.jsdelivr.net/gh/godcheese/maven-repository</url>
+    </repository>
+</repositories>
 ```
 
 pom.xml 文件中依赖包添加方式，如下：
