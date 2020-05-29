@@ -1,7 +1,8 @@
 # maven-repository
 自己的 Maven Repository
 
-将以下代码添加到项目的 pom.xml 中即可获取本仓库的依赖包：
+## 添加仓库镜像
+- 将以下代码添加到项目的 pom.xml 中即可获取本仓库的依赖包：
 
 ```
 <repositories>
@@ -12,18 +13,12 @@
 </repositories>
 ```
 
-国内镜像地址（解决无法连接 GitHub 的问题）
-
+- 国内无法连接 raw.githubusercontent.com 的问题，在 etc 中指定可以 PING 通的 IP 地址：
 ```
-<repositories>
-    <repository>
-        <id>godcheese-github-maven-repository</id>
-        <url>https://cdn.jsdelivr.net/gh/godcheese/maven-repository</url>
-    </repository>
-</repositories>
+199.232.28.133 raw.githubusercontent.com
 ```
 
-或者使用
+- 或者使用
 ```
 <repositories>
     <repository>
@@ -36,6 +31,8 @@
     </repository>
 </repositories>
 ```
+
+## 添加项目依赖
 pom.xml 文件中依赖包添加方式，如下：
 ```
  <dependency>
@@ -45,27 +42,6 @@ pom.xml 文件中依赖包添加方式，如下：
  </dependency>
 ```
 
-deploy.sh 代码：
-```
-#!/usr/bin/env bash
-echo "author godcheese"
-CURRENT_DIR=$(pwd)
-echo ${CURRENT_DIR}
-SCRIPTS_DIR=$(cd "$(dirname $0)" || exit; pwd)
-cd "${SCRIPTS_DIR}" || exit
-cd ..
-rm -rf maven-repository
-git clone https://github.com/godcheese/maven-repository.git
-mvn clean deploy -Dmaven.test.skip -DaltDeploymentRepository="godcheese-github-maven-repository::default::file:`pwd`/maven-repository/repository"
-cd maven-repository
-echo "Add file..."
-git add -A
-git commit -m "deploy release package."
-echo "Submit code..."
-git push origin master
-echo "Submit complete,close..."
-cd "${CURRENT_DIR}"
-cd ..
-rm -rf maven-repository
-
-```
+## 部署代码
+- [deploy.sh](https://github.com/godcheese/maven-repository/blob/master/scripts/deploy.sh)
+- [deploy.bat](https://github.com/godcheese/maven-repository/blob/master/scripts/deploy.bat)
